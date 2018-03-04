@@ -25,6 +25,7 @@ void Dialog::arduinoRead(unsigned int data)
     {
         ui->pushButton_connect->setEnabled(true);
         disconnect(mArduino, SIGNAL(arduinoRead(uint)), this, SLOT(arduinoRead(uint)));
+        QMessageBox::information(this, "Completed", "100 package has been sent!", QMessageBox::Ok);
     }
 }
 
@@ -38,7 +39,7 @@ void Dialog::on_pushButton_connect_clicked()
         return;
     } catch(...)
     {
-        QMessageBox::critical(this, "Setup Error" , "unexpected error", QMessageBox::Ok);
+        QMessageBox::critical(this, "Setup Error" , "unexpected error!", QMessageBox::Ok);
     }
 
     connect(mArduino, SIGNAL(arduinoRead(uint)), this, SLOT(arduinoRead(uint)));

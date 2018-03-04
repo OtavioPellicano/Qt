@@ -52,7 +52,7 @@ void Arduino::setup() throw(QString)
     mArduino.open(QIODevice::ReadWrite);
     if (mArduino.isOpen())
     {
-        qDebug() << "Arduino is opened";
+        qDebug() << "Serial port is opened";
         connect(&mArduino, SIGNAL(readyRead()), this, SLOT(readyRead()));
     }
     else
