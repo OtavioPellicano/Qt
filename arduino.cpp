@@ -10,7 +10,6 @@ void Arduino::readyRead()
 {
 
     QByteArray dataRead = mArduino.readAll();
-    mArduino.waitForReadyRead();
     if(dataRead.size() != 0)
     {
         if(mCounter < 100)
