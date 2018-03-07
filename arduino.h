@@ -17,6 +17,7 @@ class Arduino : public QSerialPort
     Q_OBJECT
 public:
     explicit Arduino(QSerialPort *parent = nullptr);
+    ~Arduino();
 
 signals:
     void arduinoRead(unsigned int);

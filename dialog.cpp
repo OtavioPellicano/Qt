@@ -7,8 +7,6 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    mArduino = new opmm::Arduino();
-
 }
 
 Dialog::~Dialog()
@@ -26,12 +24,14 @@ void Dialog::arduinoRead(unsigned int data)
         ui->pushButton_connect->setEnabled(true);
         disconnect(mArduino, SIGNAL(arduinoRead(uint)), this, SLOT(arduinoRead(uint)));
         QMessageBox::information(this, "Completed", "100 package has been sent!", QMessageBox::Ok);
+        delete mArduino;
     }
 }
 
 void Dialog::on_pushButton_connect_clicked()
 {
     try {
+        mArduino = new opmm::Arduino();
         mArduino->setup();
         mArduino->setCounter(0);
     } catch (QString &qs) {

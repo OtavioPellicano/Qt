@@ -6,6 +6,11 @@ Arduino::Arduino(QSerialPort *parent) : QSerialPort(parent)
 {
 }
 
+Arduino::~Arduino()
+{
+    mArduino.close();
+}
+
 void Arduino::readyRead()
 {
 
